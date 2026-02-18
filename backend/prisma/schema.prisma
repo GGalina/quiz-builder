@@ -1,0 +1,23 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+model Quiz {
+  id        Int       @id @default(autoincrement())
+  title     String
+  questions Question[]
+}
+
+model Question {
+  id       Int     @id @default(autoincrement())
+  quizId   Int
+  type     String
+  text     String
+  options  String?  // JSON string for checkbox
+  quiz     Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+}

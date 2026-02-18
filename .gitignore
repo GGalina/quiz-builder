@@ -1,0 +1,53 @@
+# ======================
+# Node.js / Backend
+# ======================
+backend/node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# ======================
+# Prisma
+# ======================
+# SQLite database
+*.db
+*.db-journal
+
+# Generated Prisma client
+backend/src/generated/
+backend/prisma/migrations
+# Prisma migrations (optional)
+# backend/prisma/migrations/
+
+# ======================
+# React / Frontend
+# ======================
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# ======================
+# Coverage
+# ======================
+coverage/
+
+# ======================
+# OS / Editor
+# ======================
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/

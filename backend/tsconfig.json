@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    // File Layout
+    "rootDir": ".",          // source files
+    "outDir": "./dist",          // compiled JS output
+
+    // Module & Target for Node
+    "module": "commonjs",        // Node + Express uses commonjs
+    "target": "ES2020",          // modern JS for Node 14+
+    "esModuleInterop": true,     // allows default import of commonjs modules
+    "forceConsistentCasingInFileNames": true,
+
+    // Typechecking
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+
+    // Source Maps & Declarations
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Node Types
+    "types": ["node"]
+  },
+  "include": ["src/**/*", "prisma"],
+  "exclude": ["node_modules", "dist"]
+}
