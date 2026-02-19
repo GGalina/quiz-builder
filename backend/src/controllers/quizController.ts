@@ -13,18 +13,17 @@ export const createQuiz = async ( req: Request<{}, {}, CreateQuiz>, res: Respons
       text: q.text,
       type: q.type,
       options: q.type === "checkbox" ? JSON.stringify(q.options) : null,
+      answer: q.type !== "checkbox" ? q.answer || null : null,
     }));
 
-    // Create quiz
     const quiz = await prisma.quiz.create({
       data: {
         title,
-        questions: {
-          create: formattedQuestions,
-        },
+        questions: { create: formattedQuestions },
       },
       include: { questions: true },
     });
+
     return res.status(201).json(quiz);
   } catch (err: any) {
     return res.status(400).json({

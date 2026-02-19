@@ -5,9 +5,10 @@ async function main() {
 
   const quiz = await prisma.quiz.create({
     data: {
-      title: "General Knowledge Quiz",
+      title: "Mixed Question Types Quiz",
       questions: {
         create: [
+          // Checkbox question
           {
             text: 'What does "CPU" stand for in computing?',
             type: "checkbox",
@@ -18,50 +19,33 @@ async function main() {
               "Core Processing Utility",
             ]),
           },
+          // Boolean question
           {
-            text: "Which company is known for creating the iPhone?",
-            type: "checkbox",
-            options: JSON.stringify(["Microsoft", "Apple", "Google", "Samsung"]),
+            text: "Is React a frontend framework?",
+            type: "boolean",
+            // answer will be filled by frontend on quiz attempt
           },
+          // Input question
           {
-            text: 'What does "VPN" stand for in online security?',
-            type: "checkbox",
-            options: JSON.stringify([
-              "Virtual Private Network",
-              "Visual Protected Network",
-              "Verified Personal Node",
-              "Virtual Packet Network",
-            ]),
+            text: "What is the capital of France?",
+            type: "input",
+            // answer will be filled by frontend on quiz attempt
           },
+          // Another checkbox
           {
-            text: 'What is considered the "brain" of an Artificial Intelligence (AI) system?',
+            text: "Select programming languages:",
             type: "checkbox",
-            options: JSON.stringify([
-              "The physical robot body",
-              "The internet connection",
-              "Neural networks",
-              "The hard drive",
-            ]),
+            options: JSON.stringify(["Python", "HTML", "JavaScript", "CSS"]),
           },
+          // Another boolean
           {
-            text: "Which of these is NOT a web browser?",
-            type: "checkbox",
-            options: JSON.stringify(["Chrome", "Firefox", "Safari", "Python"]),
+            text: "Does 2 + 2 equal 4?",
+            type: "boolean",
           },
+          // Another input
           {
-            text: "What year did the World Wide Web (WWW) become available to the public?",
-            type: "checkbox",
-            options: JSON.stringify(["1985", "1991", "1995", "2000"]),
-          },
-          {
-            text: 'What does "IoT" stand for?',
-            type: "checkbox",
-            options: JSON.stringify([
-              "Internet of Things",
-              "Information over Technology",
-              "Integrated open Tools",
-              "Input on Terminals",
-            ]),
+            text: "Name a planet in our solar system that starts with 'M'.",
+            type: "input",
           },
         ],
       },

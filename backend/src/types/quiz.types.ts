@@ -7,7 +7,8 @@ export type QuestionType = "boolean" | "input" | "checkbox";
 export interface QuestionInput {
   text: string;
   type: QuestionType;
-  options?: string[];
+  options?: string[];  // only for checkbox
+  answer?: string;     // boolean/input
 }
 
 /**

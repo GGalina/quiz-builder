@@ -26,31 +26,20 @@ export const validateCreateQuiz = (body: unknown): CreateQuiz => {
 
 // Validate a single question
 const validateQuestion = (question: unknown): void => {
-    if (!question || typeof question !== "object") {
-        throw new Error("Each question must be an object");
+  if (!question || typeof question !== "object") throw new Error("Each question must be an object");
+  
+  const { text, type, options, answer } = question as Partial<QuestionInput>;
+
+  if (!text || typeof text !== "string") throw new Error("Question text must be non-empty");
+  if (!["boolean", "input", "checkbox"].includes(type!)) throw new Error(`Invalid type: ${type}`);
+
+  if (type === "checkbox") {
+    if (!Array.isArray(options) || options.length === 0) throw new Error("Checkbox must have options");
+  } else {
+    if (typeof answer !== "string" || answer.trim() === "") {
+      throw new Error(`${type} question "${text}" must have an answer`);
     }
-
-    const { text, type, options } = question as Partial<QuestionInput>;
-
-    if (typeof text !== "string" || text.trim().length === 0) {
-        throw new Error("Question text must be a non-empty string");
-    }
-
-    if (type !== "boolean" && type !== "input" && type !== "checkbox") {
-        throw new Error(`Invalid question type: ${String(type)}`);
-    }
-
-    if (type === "checkbox") {
-        if (!Array.isArray(options) || options.length === 0) {
-            throw new Error(`Checkbox question "${text}" must have options array`);
-        }
-
-        options.forEach((opt) => {
-            if (typeof opt !== "string" || opt.trim().length === 0) {
-                throw new Error(`Checkbox options must be non-empty strings`);
-            }
-        });
-    }
+  }
 };
 
 // Validate quiz ID from params

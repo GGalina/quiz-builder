@@ -18,6 +18,7 @@ model Question {
   quizId   Int
   type     String
   text     String
-  options  String?  // JSON string for checkbox
-  quiz     Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  options  String?   // JSON string for checkbox options
+  answer   String?   // store boolean/input answers as string
+  quiz     Quiz      @relation(fields: [quizId], references: [id], onDelete: Cascade)
 }

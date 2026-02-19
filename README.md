@@ -49,65 +49,98 @@ npm run dev
 Server runs on: http://localhost:4000
 
 ### API Endpoints
-1. Get all quizzes
+
+1. Get All Quizzes
 
 Endpoint: GET /quizzes
 
-Response:
-
+Response Example:
 ```bash
 [
   {
     "id": 1,
-    "title": "Sample Quiz",
-    "numQuestions": 3
-  }
+    "title": "React Basics",
+    "questions": [
+      { "id": 1, "text": "What is JSX?", "type": "input", "answer": null },
+      { "id": 2, "text": "Is React a library?", "type": "boolean", "answer": "true" }
+    ]
+  },
 ]
 ```
 
-2. Get quiz by ID
+2. Get Quiz by ID
 
 Endpoint: GET /quizzes/:id
 
-Response:
+Sample Request: GET /quizzes/1
 
+Response Example:
 ```bash
 {
   "id": 1,
-  "title": "Sample Quiz",
+  "title": "React Basics",
   "questions": [
-    { "id": 1, "text": "Is the sky blue?", "type": "boolean", "options": null }
+    { "id": 1, "text": "What is JSX?", "type": "input", "answer": null },
+    { "id": 2, "text": "Is React a library?", "type": "boolean", "answer": "true" },
+    {
+      "id": 3,
+      "text": "Select React hooks",
+      "type": "checkbox",
+      "options": [
+        { "text": "useState", "correct": true },
+        { "text": "useEffect", "correct": true },
+        { "text": "useFetch", "correct": false }
+      ],
+      "answer": null
+    }
   ]
 }
 ```
-3. Create a quiz
+
+3. Create a New Quiz
 
 Endpoint: POST /quizzes
 
-Request Body:
-
+Sample Request Body:
 ```bash
 {
-  "title": "Sample Quiz",
+  "title": "New Quiz",
   "questions": [
-    { "text": "Is the sky blue?", "type": "boolean" },
-    { "text": "Your name?", "type": "input" },
-    { "text": "Select fruits", "type": "checkbox", "options": ["Apple","Banana"] }
+    { "text": "Your name?", "type": "input", "answer": "" },
+    { "text": "Is JS fun?", "type": "boolean", "answer": "true" },
+    {
+      "text": "Select valid JS types",
+      "type": "checkbox",
+      "options": ["string", "boolean", "integer"],
+      "answer": null
+    }
   ]
 }
 ```
 
-Response:
-
+Sample Response:
 ```bash
 {
-  "id": 1,
-  "title": "Sample Quiz",
+  "id": 3,
+  "title": "New Quiz",
   "questions": [
-    { "id": 1, "text": "Is the sky blue?", "type": "boolean", "options": null }
+    { "id": 1, "text": "Your name?", "type": "input", "answer": "" },
+    { "id": 2, "text": "Is JS fun?", "type": "boolean", "answer": "true" },
+    {
+      "id": 3,
+      "text": "Select valid JS types",
+      "type": "checkbox",
+      "options": [
+        { "text": "string", "correct": false },
+        { "text": "boolean", "correct": false },
+        { "text": "integer", "correct": false }
+      ],
+      "answer": null
+    }
   ]
 }
 ```
+
 4. Delete a quiz
 
 Endpoint: DELETE /quizzes/:id
@@ -133,3 +166,36 @@ npm run seed
 ```
 
 ## Frontend
+This is the frontend of the Quiz Builder project, built with React, TypeScript, and Tailwind CSS. It allows users to create, view, and manage quizzes.
+
+### Tech Stack
+
+* React (functional components + hooks)
+* TypeScript for type safety
+* React Router for navigation
+* React Hook Form for form handling
+* Tailwind CSS for styling
+* ESLint + Prettier for code quality and formatting
+
+###  Getting Started
+
+1. Clone the repository
+```bash
+git clone https://github.com/GGalina/quiz-builder.git
+cd frontend
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+If you encounter peer dependency issues, try:
+```bash
+npm install --legacy-peer-deps
+```
+
+3. Run the frontend
+```bash
+npm start
+```

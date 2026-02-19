@@ -6,6 +6,7 @@ import quizRoutes from "./routes/quizRoutes";
 dotenv.config();
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 

@@ -1,0 +1,55 @@
+/* Tailwind base imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Custom global styles --- */
+
+/* Body styling */
+body {
+  @apply bg-gray-100 text-gray-900 font-sans;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  @apply text-gray-900 font-bold;
+}
+
+/* Buttons */
+button {
+  @apply cursor-pointer rounded transition-colors duration-200;
+}
+
+button:hover {
+  @apply opacity-90;
+}
+
+/* Links */
+a {
+  @apply text-blue-600 hover:text-blue-800 underline;
+}
+
+/* Inputs */
+input, textarea, select {
+  @apply border border-gray-300 rounded p-2 outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent;
+}
+
+/* Form container */
+form {
+  @apply bg-white p-6 rounded shadow-md;
+}
+
+/* Quiz item box */
+.quiz-item {
+  @apply flex justify-between items-center bg-white p-4 rounded shadow-sm border border-gray-200;
+}
+
+/* Quiz question box */
+.question-box {
+  @apply bg-white p-4 rounded border border-gray-200 mb-4;
+}
+
+/* Checkbox/option row */
+.option-row {
+  @apply flex items-center gap-2 mb-1;
+}
