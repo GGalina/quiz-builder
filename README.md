@@ -199,3 +199,4 @@ npm install --legacy-peer-deps
 ```bash
 npm start
 ```
+Requirements: https://qaroast.notion.site/Full-Stack-JS-engineer-test-assessment-the-Quiz-Builder-2c70fe54b07b80b2ad62cc41208a60ff
